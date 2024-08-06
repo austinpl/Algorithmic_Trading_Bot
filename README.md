@@ -1,1 +1,1 @@
-# Algorithmic Trading Bot
+# Deep Learning Algorithmic Trading Bot
