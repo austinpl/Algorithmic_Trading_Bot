@@ -16,4 +16,10 @@ Neural networks differ from traditional machine learning classifiers, such as SV
 
 A specific subcategory of neural networks particularly adept at handling seq-2-seq problems is the recurrent neural network (RNN). Unlike traditional neural networks, which process each input and output independently, RNNs retain information from previous inputs to inform subsequent outputs. This capability allows RNNs to effectively capture and utilize the sequential context of the data. The Long Short-Term Memory (LSTM) model, a variant of the RNN, has a unique architecture that captures long-range dependencies better than a basic RNN. Given that our dataset spans over a decade, the LSTM model is the most suitable choice for this task.
 
-### 
+### Feature Engineering
+Now that we have chosen our model, the next step is determining what factors (features) help traders predict a stock's behavior? For starters, stock trading places a heavy emphasis on technical analysis, using certain indicators or metrics to attempt to gain a better understanding of price movement and chart trends. Alongside the typical stock information consisting of open, close, adj close, high, low, and volume, we will use technical indicators such as Garman-Klass volatility, RSI, MACD, EMA-10, and EMA-50 to give our model a more comprehensive understanding of the stock's behavior.
+
+### Defining Model Output
+Now begs the question: what do we want the model to predict? 
+
+There are numerous ways to approach this. For instance, we could have the model predict how much a stock will go up or down based on a variety of factors. 
