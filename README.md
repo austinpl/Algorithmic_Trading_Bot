@@ -25,3 +25,7 @@ Now begs the question: what exactly do we want the model to predict?
 There are several approaches to this. One option is to have the model predict the exact price movement of a stock, which is a regression problem. Another method is to determine whether the stock will end positive or negative for the day, a classification problem. Given that stock movement is largely stochastic, I decided that a classification approach would provide the model with some flexibility, rather than requiring it to predict specific prices.
 
 However, instead of binary classification, I opted for multi-class classification to capture the magnitude of a stock's price change. After all, a one-cent increase in stock price is very different from a ten-dollar increase, even though both outcomes are positive. To achieve this, I created four categories: greater profit, lesser profit, lesser losses, and greater losses. The distinction between "greater" and "lesser" is based on whether the stock ended within the top 50% or bottom 50% of their respective classification percentile.
+
+### Data Transformation
+
+### Model Creation and Training
