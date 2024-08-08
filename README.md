@@ -2,7 +2,7 @@
 This project features an algorithmic swing trading bot that utilizes a recurrent neural network (LSTM) to classify stock returns. The bot is engineered to execute trades based on these predicted classifications, offering an empirical approach to swing trading. Additionally, it integrates insider trading data to enhance trading decisions by tracking company executives' significant buy/sell activities. 
 
 ## Initial Considerations
-Embarking on this ambitious project involves addressing several key factors. First and foremost, knowing how to work with time series data is crucial, as stock prices are inherently correlated with time. Forecasting stock prices thus reveals itself as a sequence-to-sequence (seq-2-seq) problem, necessitating extensive data transformation to ensure it is suitable for our model.
+First and foremost, knowing how to work with time series data is crucial, as stock prices are inherently correlated with time. Forecasting stock prices thus reveals itself as a sequence-to-sequence (seq-2-seq) problem, necessitating extensive data transformation to ensure it is suitable for our model.
 
 Another significant consideration is the high dimensionality of the data. This project utilizes data from 464 stocks within the S&P 500, tracking their historical movements from January 2014 to August 2024, amounting to approximately 1.2 million observations. To balance data relevancy and computational efficiency, we must employ various techniques, such as standardization, categorical encoding, and dimensionality reduction.
 
@@ -16,3 +16,4 @@ Neural networks differ from traditional machine learning classifiers, such as SV
 
 A specific subcategory of neural networks particularly adept at handling seq-2-seq problems is the recurrent neural network (RNN). Unlike traditional neural networks, which process each input and output independently, RNNs retain information from previous inputs to inform subsequent outputs. This capability allows RNNs to effectively capture and utilize the sequential context of the data. The Long Short-Term Memory (LSTM) model, a variant of the RNN, has a unique architecture that captures long-range dependencies better than a basic RNN. Given that our dataset spans over a decade, the LSTM model is the most suitable choice for this task.
 
+### 
