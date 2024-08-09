@@ -8,7 +8,7 @@ Another significant consideration is the high dimensionality of the data. This p
 
 Additionally, ensuring the quality and consistency of the data is paramount. We need to handle missing values, outliers, and any potential anomalies to maintain the integrity of the dataset. Considering the potential for class imbalance in stock return classifications, techniques such as class weighting or resampling may be necessary to ensure robust model training.
 
-Lastly, developing a robust entry trading strategy necessitates crafting an entry and exit strategy capable of adapting to a volatile and stochastic market. This involves optimizing portfolio allocation, setting precise stop losses, and defining clear criteria for when to buy and sell stocks. The goal is to ensure that the trading strategy remains effective and resilient under varying market conditions.
+Lastly, developing a robust trading strategy necessitates crafting an entry and exit strategy capable of adapting to a volatile and stochastic market. This involves optimizing portfolio allocation, setting precise stop losses, and defining clear criteria for when to buy and sell stocks. The goal is to ensure that the trading strategy remains effective and resilient under varying market conditions.
 
 ## Implementing the LSTM Model
 ### Why LSTM?
