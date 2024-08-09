@@ -62,8 +62,6 @@ Before feeding data into our model, we need to address the issue of class imbala
 #### Model Structure and Hyperparameters
 To enhance the model's ability to capture complex temporal patterns, we employ two LSTM layers, each with 150 units. This stacked architecture adds depth, allowing the model to better understand sequential dependencies in the data.
 
-To prevent overfitting, each LSTM layer is followed by BatchNormalization, which normalizes layer inputs and helps stabilize learning, and Dropout set at 20%, which randomly omits neurons during training to promote generalization.
+To prevent overfitting, each LSTM layer is followed by BatchNormalization, which normalizes layer inputs and helps stabilize learning, and Dropout set at 20%, which randomly omits neurons during training to promote generalization. Additionally, early stopping is implemented to halt training if the validation loss doesn't improve for 5 consecutive epochs, ensuring the model retains the best weights.
 
 The model's output layer consists of a Dense layer with 4 units and a softmax activation function, providing probability distributions across the four classes. We will choose the class with the highest probability distribution as our output prediction. The model is compiled using the Adam optimizer, known for its adaptive learning rates, and sparse_categorical_crossentropy as the loss function, ideal for multi-class classification.
-
-Early stopping is implemented to halt training if the validation loss doesn't improve for 5 consecutive epochs, ensuring the model retains the best weights and avoids overfitting.
