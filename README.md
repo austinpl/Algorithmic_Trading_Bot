@@ -29,5 +29,12 @@ However, instead of binary classification, I opted for multi-class classificatio
 In addition to capturing the magnitude of price changes, multi-class classification also provides the model with a greater margin for error. In this approach, perfect accuracy isn't required. For example, if the model predicts a stock will yield "greater profit" but it only results in "lesser profit," we still achieve a positive outcome.
 
 ### Data Transformation
+#### Principal Component Analysis (PCA)
+A frequently overlooked issue in modeling is multicollinearity, where multiple features are highly correlated with each other. This can create redundancies within the model and diminish the true individual significance of the independent variables.
+
+A powerful technique to address this is principal component analysis (PCA). PCA uses linear algebra (specifically eigenvectors and eigenvalues) to condense the information from the original features into a smaller set of new features, or principal components, while minimizing information loss. In our case, we transformed our features into 7 principal components, reducing the total number of features by 5. This approach allowed us to retain 99% of the explained variance, which represents an excellent trade-off between dimensionality reduction and information preservation.
+
+#### Binary Encoding of Categorical Variables
+Because w
 
 ### Model Creation and Training
