@@ -47,3 +47,15 @@ LSTMs have specific requirements for their inputs, as they process sequential da
 We can define the length of each sequence, known as the lookback period, which determines the timeframe the LSTM will consider as context for its next output. For this model, we'll use a lookback period of 30 days, meaning the model will use 30 days of prior data to inform its next prediction.
 
 ### Model Creation and Training
+#### LSTM Structure
+Now that our data is ready for LSTM processing, the next task is to define the model's structure.
+
+One of the biggest challenges I faced was adapting the LSTM to analyze data from 464 stocks simultaneously, given that LSTMs are typically designed to handle individual sequences. Since each stock shares the same timestamps, organizing the data for sequential processing by the LSTM was particularly challenging. Grouping the data by date would cause the LSTM to mistakenly interpret the next stock on the same day as the next time step for the same stock. On the other hand, grouping the data by stock would lead the LSTM to incorrectly assume that the next stock's data is a continuation of the previous stock's sequence. Essentially, the LSTM treats all the data as one continuous sequence, despite it actually consisting of 464 distinct sequences aggregated into a single dataset. To complicate matters further, there's very little information available on how to address this issue.
+
+After thoroughly researching and studying the LSTM architecture, I devised a solution. As mentioned earlier, LSTMs retain context from previous inputs within a designated lookback period by storing this context in a matrix called the "hidden state." The issue arises when training the model on multiple stocks: the hidden state doesn't automatically reset between stocks, which means context from one stock could incorrectly influence predictions for another, even though the stocks are independent.
+
+Fortunately, LSTMs offer the option to be either stateful or stateless. In a stateful LSTM, the hidden state persists across batches, while in a stateless LSTM, the hidden state resets after each batch. By setting the LSTM to be stateless, we can reset the context for each stock, preventing any information leakage between them.
+
+The next step involves ensuring that the model trains on each stock's sequence separately. While we've addressed the hidden state issue, we still need to define clear boundaries between different stocks during training. This is where batch processing comes in. Normally, batching is used to process data in smaller, manageable chunks during training, improving efficiency and stability. However, in our case, we'll use batching to isolate each stock's data. By setting the batch size to match the number of sequences for a single stock and disabling batch shuffling, we ensure that the model processes each stock's data sequentially, transitioning from one stock to the next without mixing their contexts.
+
+#### Class Imbalance
