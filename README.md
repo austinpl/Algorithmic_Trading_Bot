@@ -60,7 +60,7 @@ The next step involves ensuring that the model trains on each stock's sequence s
 Before feeding data into our model, we need to address the issue of class imbalance. In stock data, it's common to have an uneven distribution of labels. For instance, our dataset contains significantly more instances of losses than profits. This imbalance can bias the model towards predicting losses more often, as it would be statistically more likely to be correct. To mitigate this, we can assign weights to each class, giving more importance to less frequent classes. This technique helps balance the influence of each class during training, encouraging the model to learn to recognize patterns associated with less common outcomes, such as profits. By doing so, we aim to improve the model's ability to make accurate predictions across all classes, not just the majority class.
 
 #### Model Structure and Hyperparameters
-The model is a Sequential LSTM-based network designed for multi-class classification of stock price movements. To enhance the model's ability to capture complex temporal patterns, we employ two LSTM layers, each with 150 units. This stacked architecture adds depth, allowing the model to better understand sequential dependencies in the data.
+To enhance the model's ability to capture complex temporal patterns, we employ two LSTM layers, each with 150 units. This stacked architecture adds depth, allowing the model to better understand sequential dependencies in the data.
 
 To prevent overfitting, each LSTM layer is followed by BatchNormalization, which normalizes layer inputs and helps stabilize learning, and Dropout set at 20%, which randomly omits neurons during training to promote generalization.
 
