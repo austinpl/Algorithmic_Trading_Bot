@@ -26,6 +26,8 @@ There are several approaches to this. One option is to have the model predict th
 
 However, instead of binary classification, I opted for multi-class classification to capture the magnitude of a stock's price change. After all, a one-cent increase in stock price is very different from a ten-dollar increase, even though both outcomes are positive. To achieve this, I created four categories: greater profit, lesser profit, lesser losses, and greater losses. The distinction between "greater" and "lesser" is based on whether the stock ended within the top 50% or bottom 50% of their respective classification percentile.
 
+In addition to capturing the magnitude of price changes, multi-class classification also provides the model with a greater margin for error. In this approach, perfect accuracy isn't required. For example, if the model predicts a stock will yield "greater profit" but it only results in "lesser profit," we still achieve a positive outcome.
+
 ### Data Transformation
 
 ### Model Creation and Training
