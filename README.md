@@ -35,6 +35,15 @@ A frequently overlooked issue in modeling is multicollinearity, where multiple f
 A powerful technique to address this is principal component analysis (PCA). PCA uses linear algebra (specifically eigenvectors and eigenvalues) to condense the information from the original features into a smaller set of new features, or principal components, while minimizing information loss. In our case, we transformed our features into 7 principal components, reducing the total number of features by 5. This approach allowed us to retain 99% of the explained variance, which represents an excellent trade-off between dimensionality reduction and information preservation.
 
 #### Binary Encoding of Categorical Variables
-Because w
+Since we are dealing with multiple stocks, each with its own unique characteristics, it’s important to explicitly differentiate them so our model can learn the distinctions between each stock. To represent the identity of a stock in a way that our model can understand, we use a technique called categorical encoding.
+
+One common method is one-hot encoding, which assigns a unique binary vector to each stock (e.g., 464 features, one for each stock). However, this would add 464 new features, which could overly complicate our model. Instead, I chose to use binary encoding, which represents each stock with a binary code, significantly reducing the number of new features to just 9. This keeps the model simpler and more efficient while still conveying the necessary information.
+
+#### Sequence Creation for LSTM Input
+With our data now effectively transformed to include the necessary information for the model, the final step is to format it for processing by the LSTM.
+
+LSTMs have specific requirements for their inputs, as they process sequential data by breaking it into smaller segments called sequences. The context gathered from each sequence is then used to inform the output for the following step. Although our data is already in chronological order, we still need to create these sequences for each stock, covering the entire period from the starting date to the end date.
+
+We can define the length of each sequence, known as the lookback period, which determines the timeframe the LSTM will consider as context for its next output. For this model, we'll use a lookback period of 30 days, meaning the model will use 30 days of prior data to inform its next prediction.
 
 ### Model Creation and Training
